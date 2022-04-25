@@ -15,7 +15,7 @@ dis_width = 600
 dis_height = 400
  
 dis = pygame.display.set_mode((dis_width, dis_height))
-pygame.display.set_caption('Snake Game by Edureka')
+pygame.display.set_caption('War Snake by Hiltwine & Hughes')
  
 clock = pygame.time.Clock()
  
@@ -23,11 +23,11 @@ snake_block = 10
 snake_speed = 15
  
 font_style = pygame.font.SysFont("bahnschrift", 25)
-score_font = pygame.font.SysFont("comicsansms", 35)
+score_font = pygame.font.SysFont("comicsansms", 15)
  
  
 def Your_score(score):
-    value = score_font.render("Your Score: " + str(score), True, yellow)
+    value = score_font.render("Eat the Black Food, Avoid the Red Mines! Your Score: " + str(score), True, white)
     dis.blit(value, [0, 0])
  
  
@@ -57,12 +57,16 @@ def gameLoop():
  
     foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
     foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+
+    minex = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+    miney = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+
  
     while not game_over:
  
         while game_close == True:
-            dis.fill(blue)
-            message("You Lost! Press C-Play Again or Q-Quit", red)
+            dis.fill(red)
+            message("You Lost! Press C-Play Again or Q-Quit", black)
             Your_score(Length_of_snake - 1)
             pygame.display.update()
  
@@ -95,8 +99,10 @@ def gameLoop():
             game_close = True
         x1 += x1_change
         y1 += y1_change
-        dis.fill(blue)
-        pygame.draw.rect(dis, green, [foodx, foody, snake_block, snake_block])
+        dis.fill(green)
+        
+        pygame.draw.rect(dis, black, [foodx, foody, snake_block, snake_block])
+        pygame.draw.rect(dis, red, [minex, miney, snake_block, snake_block])
         snake_Head = []
         snake_Head.append(x1)
         snake_Head.append(y1)
@@ -117,6 +123,21 @@ def gameLoop():
             foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
             foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
             Length_of_snake += 1
+
+        if (x1 == minex and y1 == miney):
+            minex = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+            miney = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+            snake_Head.remove(x1)
+            snake_Head.remove(y1)
+            snake_List.remove(snake_Head)
+            Length_of_snake -= 1
+
+            if Length_of_snake < 1:
+                game_close = True
+
+            
+                
+            
  
         clock.tick(snake_speed)
  

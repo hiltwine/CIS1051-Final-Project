@@ -28,7 +28,7 @@ score_font = pygame.font.Font("Margarine-Regular.ttf", 20)
  
  
 def Your_score(score):
-    value = score_font.render("Eat the Black Food, Avoid the Red Mines! Your Score: " + str(score), True, white)
+    value = score_font.render("Eat the Golden Apples, Avoid the Red Mines! Your Score: " + str(score), True, white)
     dis.blit(value, [0, 0])
  
  

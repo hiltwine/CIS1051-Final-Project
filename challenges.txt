@@ -1,0 +1,13 @@
+#Challenges
+
+The first hump that we had to overcome was the download of pip and pygame. Although generally the download of pyhton
+includes pip, Tom's computer did not do that. The manipulation of some files was believed to be the downfall for Tom
+and he had to delete everything that had to do with the software off of his computer. The next step was creating snake. 
+We were able to get a base snake game and incorperate the first mine fairly easily. After this, however, we got stuck 
+trying figure a way to have more and more mines pop up. The reasoning behind this was due to the length of the code.
+After a very in-depth look into the snake game, we found that we virtually had to reset the game in a series of if 
+statements that allowed us to increase the number of mines by having each if statement incorperate more and more mine 
+variables. The next thing we had to overcome was making sure the mines and food were randomly moving as anything,
+food or mine was collected. To do this we had to find that each mine and food had to present in the if statements 
+depicting the change in size of the snake based on collecting food or mines. After these road-blocks, we were able to 
+effectively create a snake game that creatively increased in difficulty as the game moved along.

@@ -60,13 +60,24 @@ def gameLoop():
 
     minex = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
     miney = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+    
+    minex2 = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+    miney2 = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
 
+    minex3 = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+    miney3 = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+
+    minex4 = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+    miney4 = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+
+    minex5 = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+    miney5 = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
  
     while not game_over:
  
         while game_close == True:
             dis.fill(red)
-            message("You Lost! Press C-Play Again or Q-Quit", black)
+            message("Get Better! Press C-Play Again or Q-Quit" , black)
             Your_score(Length_of_snake - 1)
             pygame.display.update()
  
@@ -100,43 +111,121 @@ def gameLoop():
         x1 += x1_change
         y1 += y1_change
         dis.fill(green)
-        
-        pygame.draw.rect(dis, black, [foodx, foody, snake_block, snake_block])
-        pygame.draw.rect(dis, red, [minex, miney, snake_block, snake_block])
-        snake_Head = []
-        snake_Head.append(x1)
-        snake_Head.append(y1)
-        snake_List.append(snake_Head)
-        if len(snake_List) > Length_of_snake:
-            del snake_List[0]
- 
-        for x in snake_List[:-1]:
-            if x == snake_Head:
-                game_close = True
- 
-        our_snake(snake_block, snake_List)
-        Your_score(Length_of_snake - 1)
- 
-        pygame.display.update()
- 
-        if x1 == foodx and y1 == foody:
-            foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
-            foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
-            Length_of_snake += 1
 
-        if (x1 == minex and y1 == miney):
-            minex = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
-            miney = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
-            snake_Head.remove(x1)
-            snake_Head.remove(y1)
-            snake_List.remove(snake_Head)
-            Length_of_snake -= 1
+        if Length_of_snake <= 5:
+            pygame.draw.rect(dis, black, [foodx, foody, snake_block, snake_block])
+            pygame.draw.rect(dis, red, [minex, miney, snake_block, snake_block])
+            
+            snake_Head = []
+            snake_Head.append(x1)
+            snake_Head.append(y1)
+            snake_List.append(snake_Head)
 
-            if Length_of_snake < 1:
-                game_close = True
+            if len(snake_List) > Length_of_snake:
+                del snake_List[0]
+     
+            for x in snake_List[:-1]:
+                if x == snake_Head:
+                    game_close = True
+     
+            our_snake(snake_block, snake_List)
+            Your_score(Length_of_snake - 1)
+     
+            pygame.display.update()
+     
+            if x1 == foodx and y1 == foody:
+                foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                minex = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                miney = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                Length_of_snake += 1
+
+            if (x1 == minex and y1 == miney):
+                foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                minex = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                miney = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                
+                snake_Head.remove(x1)
+                snake_Head.remove(y1)
+                snake_List.remove(snake_Head)
+                Length_of_snake -= 1
+
+                if Length_of_snake < 1:
+                    game_close = True
+
+        elif Length_of_snake > 5:
+            pygame.draw.rect(dis, black, [foodx, foody, snake_block, snake_block])
+            pygame.draw.rect(dis, red, [minex, miney, snake_block, snake_block])
+            pygame.draw.rect(dis, red, [minex2, miney2, snake_block, snake_block])
+            pygame.draw.rect(dis, red, [minex3, miney3, snake_block, snake_block])
+            pygame.draw.rect(dis, red, [minex4, miney4, snake_block, snake_block])
+            pygame.draw.rect(dis, red, [minex5, miney5, snake_block, snake_block])
+            
+            snake_Head = []
+            snake_Head.append(x1)
+            snake_Head.append(y1)
+            snake_List.append(snake_Head)
+
+            if len(snake_List) > Length_of_snake:
+                del snake_List[0]
+     
+            for x in snake_List[:-1]:
+                if x == snake_Head:
+                    game_close = True
+     
+            our_snake(snake_block, snake_List)
+            Your_score(Length_of_snake - 1)
+     
+            pygame.display.update()
+     
+            if x1 == foodx and y1 == foody:
+                foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                minex = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                miney = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                minex = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                miney = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                minex2 = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                miney2 = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                minex3 = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                miney3 = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                minex4 = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                miney4 = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                minex5 = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                miney5 = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                snake_Head.append(x1)
+                snake_Head.append(y1)
+                snake_List.append(snake_Head)
+                Length_of_snake += 1
+
+            if (x1 == minex and y1 == miney) or (x1 == minex2 and y1 == miney2) or (x1 == minex3 and y1 == miney3) or (x1 == minex4 and y1 == miney4) or (x1 == minex5 and y1 == miney5):
+                foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                minex = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                miney = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                minex = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                miney = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                minex2 = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                miney2 = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                minex3 = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                miney3 = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                minex4 = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                miney4 = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                minex5 = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                miney5 = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                snake_Head.remove(x1)
+                snake_Head.remove(y1)
+                snake_List.remove(snake_Head)
+                Length_of_snake -= 1
+
+                if Length_of_snake < 1:
+                    game_close = True
+            
 
             
                 
+
             
  
         clock.tick(snake_speed)

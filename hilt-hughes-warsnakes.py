@@ -8,7 +8,7 @@ white = (255, 255, 255)
 yellow = (255, 255, 102)
 black = (0, 0, 0)
 red = (213, 50, 80)
-green = (0, 255, 0)
+green = (0, 200, 0)
 blue = (50, 153, 213)
  
 dis_width = 600
@@ -23,7 +23,7 @@ snake_block = 10
 snake_speed = 15
  
 font_style = pygame.font.SysFont("bahnschrift", 25)
-score_font = pygame.font.SysFont("comicsansms", 15)
+score_font = pygame.font.Font("Margarine-Regular.ttf", 20)
  
  
 def Your_score(score):
